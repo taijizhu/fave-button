@@ -28,10 +28,10 @@ import UIKit
 public typealias DotColors = (first: UIColor, second: UIColor)
 
 
-public protocol FaveButtonDelegate{
+@objc public protocol FaveButtonDelegate{
     func faveButton(_ faveButton: FaveButton, didSelected selected: Bool)
     
-    func faveButtonDotColors(_ faveButton: FaveButton) -> [DotColors]?
+ //   func faveButtonDotColors(_ faveButton: FaveButton) -> [DotColors]?
 }
 
 
@@ -40,7 +40,7 @@ public extension FaveButtonDelegate{
     func faveButtonDotColors(_ faveButton: FaveButton) -> [DotColors]?{ return nil }
 }
 
-open class FaveButton: UIButton {
+@objc open class FaveButton: UIButton {
     
     fileprivate struct Const{
         static let duration             = 1.0
@@ -57,7 +57,7 @@ open class FaveButton: UIButton {
     @IBInspectable open var circleFromColor: UIColor = UIColor(red: 221/255, green: 70/255,  blue: 136/255, alpha: 1)
     @IBInspectable open var circleToColor: UIColor   = UIColor(red: 205/255, green: 143/255, blue: 246/255, alpha: 1)
     
-    @IBOutlet open weak var delegate: AnyObject?
+    @objc @IBOutlet open weak var delegate: AnyObject?
     
     fileprivate(set) var sparkGroupCount: Int = 7
     
@@ -65,7 +65,7 @@ open class FaveButton: UIButton {
     fileprivate var faveIcon: FaveIcon!
     fileprivate var animationsEnabled = true
     
-    override open var isSelected: Bool {
+     override open var isSelected: Bool {
         didSet{
             guard self.animationsEnabled else {
                 return
@@ -94,7 +94,7 @@ open class FaveButton: UIButton {
         applyInit()
     }
     
-    public func setSelected(selected: Bool, animated: Bool) {
+    @objc public func setSelected(selected: Bool, animated: Bool) {
         guard selected != self.isSelected else {
             return
         }
