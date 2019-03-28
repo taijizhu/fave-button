@@ -74,7 +74,7 @@ public extension FaveButtonDelegate{
         }
     }
     
-    convenience public init(frame: CGRect, faveIconNormal: UIImage?) {
+    @objc convenience public init(frame: CGRect, faveIconNormal: UIImage?) {
         self.init(frame: frame)
         
         guard let icon = faveIconNormal else{
